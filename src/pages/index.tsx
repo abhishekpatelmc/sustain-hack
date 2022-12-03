@@ -2,14 +2,14 @@ import { GetStaticProps, InferGetStaticPropsType, type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import Navbar from "../../components/Navbar";
+import Navbar from "../components/Navbar";
 
 const Home: NextPage = ({
   users,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data: session } = useSession();
-  console.log("session data",session);
-  console.log("all users",users)
+  console.log("session data", session);
+  console.log("all users", users);
   return (
     <>
       <Head>

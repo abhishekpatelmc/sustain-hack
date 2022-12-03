@@ -1,9 +1,11 @@
 import { type NextPage } from "next";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
 
 const Home: NextPage = () => {
+  const { data: session } = useSession();
   return (
     <>
       <Head>
@@ -14,11 +16,20 @@ const Home: NextPage = () => {
       <Navbar />
       <main className="text-center">
         {/* Heading */}
-        <div>
-          <h1 className="mt-4 text-5xl font-bold text-gray-800">
-            Welcome to Sustain Hacks
-          </h1>
-        </div>
+        {!session ? (
+          <div>
+            <h1 className="mt-4 text-5xl font-bold text-gray-800">
+              Welcome to Sustain Hacks
+            </h1>
+          </div>
+        ) : (
+          <div>
+            <h1 className="mt-4 text-5xl font-bold text-gray-800">
+              Welcome to Sustain Hacks, temp
+            </h1>
+          </div>
+        )}
+
         {/* Active / Inactive bar */}
         <div className="mt-10 flex justify-center">
           <div className="flex gap-2 rounded-2xl border-2  px-2">

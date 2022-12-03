@@ -28,9 +28,7 @@ const CreatePost = () => {
 
   const [imgUrl, setImgUrl] = useState("");
   const [progresspercent, setProgresspercent] = useState(0);
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
+  const handleUpload = async () => {
     console.log(file);
     if (!file) return;
     const storageRef = ref(storage, `files/${file?.name}`);
@@ -55,6 +53,10 @@ const CreatePost = () => {
         });
       }
     );
+  };
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
     let res = await fetch("http://localhost:3000/api/posts", {
       method: "POST",
       body: JSON.stringify({
@@ -63,6 +65,7 @@ const CreatePost = () => {
     });
     res = await res.json();
   };
+
   return (
     <div>
       {/* Navbar */}

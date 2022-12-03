@@ -18,12 +18,17 @@ const Navbar = () => {
             {!session ? (
               <button
                 className="rounded-2xl border-2 border-gray-600 px-2 py-1 hover:bg-slate-700 hover:text-white"
-                onClick={() => signIn()}
+                onClick={() => signIn("google", { callbackUrl: "/" })}
               >
                 Login
               </button>
             ) : (
-              <button onClick={() => signOut()}>Logout</button>
+              <button
+                className="rounded-2xl border-2 border-gray-600 px-2 py-1 hover:bg-slate-700 hover:text-white"
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
             )}
           </li>
         </ul>

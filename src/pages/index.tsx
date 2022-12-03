@@ -1,11 +1,15 @@
-import { type NextPage } from "next";
+import { GetStaticProps, InferGetStaticPropsType, type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({
+  users,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data: session } = useSession();
+  console.log("session data",session);
+  console.log("all users",users)
   return (
     <>
       <Head>
@@ -19,13 +23,13 @@ const Home: NextPage = () => {
         {!session ? (
           <div>
             <h1 className="mt-4 text-5xl font-bold text-gray-800">
-              Welcome to Sustain Hacks
+              Welcome to Sustain Hacks,
             </h1>
           </div>
         ) : (
           <div>
             <h1 className="mt-4 text-5xl font-bold text-gray-800">
-              Welcome to Sustain Hacks, temp
+              Welcome to Sustain Hacks, {session?.user?.name}
             </h1>
           </div>
         )}
@@ -52,5 +56,17 @@ const Home: NextPage = () => {
     </>
   );
 };
+export const getStaticProps: GetStaticProps = async (context) => {
+  let res = await fetch("http://localhost:3000/api/users", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let users: object = await res.json();
 
+  return {
+    props: { users },
+  };
+};
 export default Home;

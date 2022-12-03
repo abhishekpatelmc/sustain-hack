@@ -69,11 +69,15 @@ const Home: NextPage = ({
         </div>
 
         {/* Create Post */}
-        <div className="mt-20 flex justify-center">
-          <button className="hover: w-40 rounded-2xl border-2 bg-green-600 px-2 py-2 text-white hover:border-slate-800 hover:bg-white hover:text-slate-800">
-            <Link href={"/create-post"}>Create Post</Link>
-          </button>
-        </div>
+        {!session ? (
+          <div></div>
+        ) : (
+          <div className="mt-20 flex justify-center">
+            <button className="hover: w-40 rounded-2xl border-2 bg-green-600 px-2 py-2 text-white hover:border-slate-800 hover:bg-white hover:text-slate-800">
+              <Link href={"/create-post"}>Create Post</Link>
+            </button>
+          </div>
+        )}
       </main>
     </>
   );

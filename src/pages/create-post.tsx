@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { storage } from "../server/lib/firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import Navbar from "../components/Navbar";
 
 const CreatePost = () => {
   const [postsState, setPostsState] = useState([]);
@@ -64,35 +65,62 @@ const CreatePost = () => {
   };
   return (
     <div>
-      createPost
-      <form onSubmit={handleSubmit}>
-        <input
-          name="title"
-          onChange={handleChange}
-          type="text"
-          placeholder="title"
-        />
-        <input
-          name="content"
-          onChange={handleChange}
-          type="text"
-          placeholder="content"
-        />
-        <input
-          name="address"
-          onChange={handleChange}
-          type="text"
-          placeholder="address"
-        />
-        <button name="status" onClick={handleChange} value="active">
-          active
-        </button>
-        <button name="status" onClick={handleChange} value="inactive">
-          inactive
-        </button>
-        <input name="file" type="file" onChange={handleChange} />
-        <button type="submit">Submit</button>
-      </form>
+      {/* Navbar */}
+      <Navbar />
+
+      <div>
+        {/* heading */}
+        <div className="mt-10 text-center">
+          <h1 className="text-4xl font-bold text-gray-600"> Create Post</h1>
+        </div>
+        {/* Post Submit form */}
+        <div className="mt-10 text-center">
+          <form className="flex" onSubmit={handleSubmit}>
+            <div className="flex-1">
+              {/* Left side */}
+              <div>
+                <input
+                  name="title"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="title"
+                />
+              </div>
+              <div>
+                <input
+                  name="content"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="content"
+                />
+              </div>
+              <div>
+                <input
+                  name="address"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="address"
+                />
+              </div>
+              <div>
+                <button name="status" onClick={handleChange} value="active">
+                  active
+                </button>
+                <button name="status" onClick={handleChange} value="inactive">
+                  inactive
+                </button>
+              </div>
+              <div>
+                <button type="submit">Submit</button>
+              </div>
+            </div>
+            {/* right side */}
+            <div className="flex-1">
+              <input name="file" type="file" onChange={handleChange} />
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

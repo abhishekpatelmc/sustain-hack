@@ -67,6 +67,7 @@ const CreatePost = () => {
   };
 
   return (
+    
     <div>
       createPost
       <form onSubmit={handleSubmit}>
@@ -88,14 +89,26 @@ const CreatePost = () => {
           type="text"
           placeholder="address"
         />
-        <button type="button" name="status" onClick={handleChange} value="active">
+        <button
+          type="button"
+          name="status"
+          onClick={handleChange}
+          value="active"
+        >
           active
         </button>
-        <button type="button" name="status" onClick={handleChange} value="inactive">
+        <button
+          type="button"
+          name="status"
+          onClick={handleChange}
+          value="inactive"
+        >
           inactive
         </button>
         <input name="file" type="file" onChange={handleChange} />
-        <button type="button" onClick={handleUpload}>upload</button>
+        <button type="button" onClick={handleUpload}>
+          upload
+        </button>
         <button type="submit">Submit</button>
       </form>
     </div>

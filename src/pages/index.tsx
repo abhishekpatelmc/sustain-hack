@@ -5,11 +5,11 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 
 const Home: NextPage = ({
-  users,
+  posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data: session } = useSession();
   console.log("session data", session);
-  console.log("all users", users);
+  console.log("all post", posts);
   return (
     <>
       <Head>
@@ -46,27 +46,32 @@ const Home: NextPage = ({
           </div>
         </div>
         {/* Posts */}
-        <div className="mt-10 flex justify-around">
-          <div className="rounded-lg border-2 px-20 py-20">One </div>
-          <div className="rounded-lg border-2 px-20 py-20">two</div>
-          <div className="rounded-lg border-2 px-20 py-20">three</div>
-          <div className="rounded-lg border-2 px-20 py-20">three</div>
+        <div className="mt-10 grid grid-cols-4 gap-4">
+          {posts.data.length > 0 &&
+            posts.data?.map((post: any) => (
+              <div>
+                <div className="col-span-1 rounded-lg bg-white shadow">
+                  {post.title}
+                </div>
+                <div> {post.content}a</div>
+              </div>
+            ))}
         </div>
       </main>
     </>
   );
 };
 export const getStaticProps: GetStaticProps = async (context) => {
-  let res = await fetch("http://localhost:3000/api/users", {
+  let res = await fetch("http://localhost:3000/api/posts", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
-  let users: object = await res.json();
+  let posts: [] = await res.json();
 
   return {
-    props: { users },
+    props: { posts },
   };
 };
 export default Home;

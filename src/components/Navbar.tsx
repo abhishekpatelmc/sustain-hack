@@ -12,7 +12,7 @@ const Navbar = () => {
             <Link href="/">Home</Link>
           </li>
           <li className="p-4  text-lg">
-            <Link href="/">Post</Link>
+            <Link href="/create-post">Post</Link>
           </li>
           <li className="p-3 text-lg">
             {!session ? (

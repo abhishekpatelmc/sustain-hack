@@ -1,6 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType, type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 
@@ -47,15 +48,31 @@ const Home: NextPage = ({
         </div>
         {/* Posts */}
         <div className="mt-10 grid grid-cols-4 gap-4">
-          {posts.data.length > 0 &&
-            posts.data?.map((post: any) => (
+          {posts?.data.length > 0 &&
+            posts?.data?.map((post: any) => (
               <div>
-                <div className="col-span-1 rounded-lg bg-white shadow">
-                  {post.title}
+                <div className="col-span-1 rounded-lg bg-white shadow-lg">
+                  <div>{post.title}</div>
+                  <div> {post.content}</div>
+                  <div>
+                    {" "}
+                    <Image
+                      width={100}
+                      height={100}
+                      src={post.file}
+                      alt={post.title}
+                    ></Image>{" "}
+                  </div>
                 </div>
-                <div> {post.content}a</div>
               </div>
             ))}
+        </div>
+
+        {/* Create Post */}
+        <div className="mt-20 flex justify-center">
+          <button className="hover: w-40 rounded-2xl border-2 bg-green-600 px-2 py-2 text-white hover:border-slate-800 hover:bg-white hover:text-slate-800">
+            <Link href={"/create-post"}>Create Post</Link>
+          </button>
         </div>
       </main>
     </>

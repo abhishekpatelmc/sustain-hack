@@ -58,12 +58,24 @@ const DeatilsPage = ({
 };
 export async function getStaticProps(context: any) {
   const id = context.params.id;
+  let data;
+  try {
+    const res = await fetch(`${server}/api/postById?id=` + id, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    data = await res.json();
+    console.log("response data?", data);
+  } catch (error) {
+    console.log("Error happened here!");
+    console.error(error);
+  }
 
-  const res = await fetch(`${server}/api/posts/` + id);
-  const data = await res.json();
   console.log("data", data);
   return {
-    props: { post: data },
+    props: { post: data || null },
   };
 }
 export async function getStaticPaths() {
@@ -72,18 +84,23 @@ export async function getStaticPaths() {
   // (faster builds, but slower initial page load)
 
   // Call an external API endpoint to get posts
-  const res = await fetch(`${server}/api/posts`);
-  const posts = await res.json();
 
+  
+ 
+    const res = await fetch(`${server}/api/posts`);
+    const posts = await res.json();
+    console.log("response data?", posts);
+   
+
+   
+ const paths = posts?.map((post: any) => ({
+    params: { id: post._id.toString() },
+  }));
   // Get the paths we want to prerender based on posts
   // In production environments, prerender all pages
   // (slower builds, but faster initial page load)
-  const paths = posts?.map((post: any) => ({
-    params: { id: post._id.toString() },
-  }));
-  console.log(paths);
 
   // { fallback: false } means other routes should 404
-  return { paths, fallback: "blocking" };
+  return { paths, fallback: false };
 }
 export default DeatilsPage;

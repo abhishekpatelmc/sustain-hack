@@ -11,13 +11,13 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Post from "../components/Post";
-import { server } from "../config";
+import Navbar from "../../components/Navbar";
+import Post from "../../components/Post";
+import { server } from "../../config";
 
 const Posts: NextPage = ({
   posts,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data: session } = useSession();
   console.log("session data", session);
   console.log("all post", posts);
@@ -107,11 +107,21 @@ const Posts: NextPage = ({
 
 export default Posts;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch(`${server}/api/posts`);
-  const posts: [] = await res.json();
+export const getStaticProps: GetStaticProps = async (context) => {
+  let posts: [] = [];
+  try {
+    const res = await fetch(`${server}/api/posts`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    posts = await res.json();
+  } catch (error) {
+    console.log(error);
+  }
 
   return {
-    props: { posts },
+    props: { posts: posts || null },
   };
 };

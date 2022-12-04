@@ -17,7 +17,7 @@ const Navbar = () => {
           {session ? (
             <li className="pt-4 text-lg">
               <Link
-                className="rounded-2xl   px-4 py-1 hover:bg-green-700 hover:text-white"
+                className="rounded-2xl px-4 py-1 hover:bg-green-700 hover:text-white"
                 href="/create-post"
               >
                 Add Posts

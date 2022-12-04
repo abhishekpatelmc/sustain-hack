@@ -3,7 +3,9 @@ import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import Post from "../components/Post";
 
 const Home: NextPage = ({
   posts,
@@ -11,6 +13,26 @@ const Home: NextPage = ({
   const { data: session } = useSession();
   console.log("session data", session);
   console.log("all post", posts);
+
+  const [isActive, setIsActive] = useState(true);
+  const [postData, setPostData] = useState(posts?.data);
+
+  useEffect(() => {
+    // console.log(isActive);
+    // console.log(session);
+    if (isActive) {
+      const activePost = posts?.data.filter((post: any) => {
+        return post.status === "active";
+      });
+      setPostData(activePost);
+    } else {
+      const inactivePost = posts?.data.filter((post: any) => {
+        return post.status === "inactive";
+      });
+      setPostData(inactivePost);
+    }
+  }, [isActive]);
+
   return (
     <>
       <Head>
@@ -36,36 +58,39 @@ const Home: NextPage = ({
         )}
 
         {/* Active / Inactive bar */}
+
         <div className="mt-10 flex justify-center">
-          <div className="flex gap-2 rounded-2xl border-2  px-2">
-            <div className="rounded-2xl border-2 border-green-600 px-2 py-1">
+          <div className="flex gap-2 rounded-3xl border-2 border-gray-200">
+            <button
+              onClick={() => {
+                setIsActive(true);
+              }}
+              className={
+                isActive
+                  ? "rounded-3xl border-green-600 bg-green-700 px-4  py-2 text-white "
+                  : "rounded-3xl border-2 border-green-600 px-4 py-1"
+              }
+            >
               active bar
-            </div>
-            <div className="rounded-2xl border-2 border-rose-900 px-2 py-1">
+            </button>
+            <button
+              onClick={() => {
+                setIsActive(false);
+              }}
+              className={
+                !isActive
+                  ? "rounded-3xl border-rose-900 bg-rose-600 px-4  py-2 text-white"
+                  : "rounded-3xl border-2 border-rose-900 px-4 py-1"
+              }
+            >
               Inactive bar
-            </div>
+            </button>
           </div>
         </div>
         {/* Posts */}
         <div className="mt-10 grid grid-cols-4 gap-4">
-          {posts?.data.length > 0 &&
-            posts?.data?.map((post: any) => (
-              <div>
-                <div className="col-span-1 rounded-lg bg-white shadow-lg">
-                  <div>{post.title}</div>
-                  <div> {post.content}</div>
-                  <div>
-                    {" "}
-                    <Image
-                      width={100}
-                      height={100}
-                      src={post.file}
-                      alt={post.title}
-                    ></Image>{" "}
-                  </div>
-                </div>
-              </div>
-            ))}
+          {postData?.length > 0 &&
+            postData?.map((post: any) => <Post post={post} />)}
         </div>
 
         {/* Create Post */}

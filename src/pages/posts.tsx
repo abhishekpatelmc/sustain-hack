@@ -106,16 +106,10 @@ const Posts: NextPage = ({
 export default Posts;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let posts;
-  try {
-    const res = await fetch(`${server}/api/posts`);
-     posts: [] = await res.json();
-    
-  } catch (error) {
-    console.log(error);
-  }
+  const res = await fetch(`${server}/api/posts`);
+  const posts: [] = await res.json();
+
   return {
     props: { posts },
   };
-  
 };

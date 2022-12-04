@@ -1,5 +1,5 @@
 import React from "react";
-import { GetStaticProps, InferGetStaticPropsType, type NextPage } from "next";
+import { GetServerSideProps, GetStaticProps, InferGetServerSidePropsType, InferGetStaticPropsType, type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import Post from "../components/Post";
 
 const Posts: NextPage = ({
   posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { data: session } = useSession();
   console.log("session data", session);
   console.log("all post", posts);
@@ -96,8 +96,8 @@ const Posts: NextPage = ({
 
 export default Posts;
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  let res = await fetch("http://localhost:3000/api/posts", {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  let res = await fetch(`${process.env.HOST_URL}/api/posts`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

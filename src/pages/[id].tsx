@@ -56,8 +56,8 @@ const DeatilsPage = ({
 };
 export async function getStaticProps(context: any) {
   const id = context.params.id;
-  console.log("id", id);
-  const res = await fetch("http://localhost:3000/api/posts/" + id);
+
+  const res = await fetch(`${process.env.HOST_URL}/api/posts/` + id);
   const data = await res.json();
   return {
     props: { post: data },
@@ -69,7 +69,7 @@ export async function getStaticPaths() {
   // (faster builds, but slower initial page load)
 
   // Call an external API endpoint to get posts
-  const res = await fetch("http://localhost:3000/api/posts");
+  const res = await fetch(`${process.env.HOST_URL}/api/posts`);
   const posts = await res.json();
 
   // Get the paths we want to prerender based on posts

@@ -63,15 +63,20 @@ const CreatePost = () => {
   };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    try {
+      let res = await fetch(`${server}/api/posts`, {
+        method: "POST",
+        body: JSON.stringify({
+          ...formData,
+        }),
+      });
+      res = await res.json();
+      router.push("/posts");
+    } catch (error) {
+      console.log(error);
+    }
+    
 
-    let res = await fetch(`${server}/api/posts`, {
-      method: "POST",
-      body: JSON.stringify({
-        ...formData,
-      }),
-    });
-    res = await res.json();
-    router.push("/posts");
   };
   const allTruthy = () => Object.values(formData).every((x) => x);
 

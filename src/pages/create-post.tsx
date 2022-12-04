@@ -63,7 +63,7 @@ const CreatePost = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    let res = await fetch("http://localhost:3000/api/posts", {
+    let res = await fetch(`${process.env.HOST_URL}/api/posts`, {
       method: "POST",
       body: JSON.stringify({
         ...formData,

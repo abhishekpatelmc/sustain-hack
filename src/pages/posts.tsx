@@ -105,12 +105,7 @@ const Posts: NextPage = ({
 export default Posts;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch(`${process.env.HOST_URL}/api/posts`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const res = await fetch(`${process.env.HOST_URL}/api/posts`);
   const posts: [] = await res.json();
 
   return {

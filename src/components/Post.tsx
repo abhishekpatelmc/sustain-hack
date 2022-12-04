@@ -3,10 +3,10 @@ import React from "react";
 
 const Post = ({ post, isActive }: any) => {
   return (
-    <div key={post.title} className="rounded-lg bg-white p-2 shadow-lg">
+    <div key={post.title} className="rounded-2xl bg-white p-2 shadow-lg">
       <div className="h-80 p-2">
         <Image
-          className="h-full w-full object-cover"
+          className="h-full w-full rounded-2xl object-cover"
           width={300}
           height={300}
           src={post.file}
@@ -18,11 +18,11 @@ const Post = ({ post, isActive }: any) => {
           <div className="ml-4 text-2xl font-bold">{post.title}</div>
           {/* <div> {post.content}</div> */}
           {isActive ? (
-            <div className="mr-4 rounded-2xl border border-green-700  px-2 py-1">
+            <div className="mr-4 rounded-2xl border  border-green-700 px-2 py-1 capitalize  hover:bg-green-700 hover:text-white">
               {post.status}
             </div>
           ) : (
-            <div className="mr-4 rounded-2xl border border-rose-700  px-2 py-1 ">
+            <div className="mr-4 rounded-2xl border border-rose-700 px-2 py-1  capitalize hover:bg-rose-700 hover:text-white ">
               {post.status}
             </div>
           )}

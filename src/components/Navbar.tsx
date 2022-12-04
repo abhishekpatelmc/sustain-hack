@@ -6,8 +6,8 @@ const Navbar = () => {
   const { data: session } = useSession();
   return (
     <div>
-      <nav className="flex justify-center border-2">
-        <ul className="flex gap-10">
+      <nav className="flex justify-center ">
+        <ul className="flex gap-10 border-b-2 border-slate-300 ">
           <li className="pt-4 text-lg ">
             <Link
               className="rounded-2xl px-4 py-1 hover:border-2 hover:border-slate-700"
@@ -19,7 +19,7 @@ const Navbar = () => {
           <li className="pt-4 text-lg">
             <Link
               className="rounded-2xl px-4 py-1 hover:border-2 hover:border-slate-700"
-              href="/"
+              href="/posts"
             >
               Posts
             </Link>

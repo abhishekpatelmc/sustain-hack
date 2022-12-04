@@ -8,10 +8,6 @@ import { server } from "../config";
 const DeatilsPage = ({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const router=useRouter()
-  if (!router.isFallback && !post?.id) {
-    return <div>404</div>;
-  }
   return (
     <div>
       <div>
@@ -65,7 +61,7 @@ export async function getStaticProps(context: any) {
 
   const res = await fetch(`${server}/api/posts/` + id);
   const data = await res.json();
-  console.log("data",data)
+  console.log("data", data);
   return {
     props: { post: data },
   };
@@ -88,6 +84,6 @@ export async function getStaticPaths() {
   console.log(paths);
 
   // { fallback: false } means other routes should 404
-  return { paths, fallback: 'blocking' };
+  return { paths, fallback: "blocking" };
 }
 export default DeatilsPage;

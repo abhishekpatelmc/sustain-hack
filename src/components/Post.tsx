@@ -5,7 +5,13 @@ const Post = ({ post, isActive }: any) => {
   return (
     <div key={post.title} className="rounded-lg bg-white p-2 shadow-lg">
       <div className="h-80 p-2">
-        <Image width={300} height={300} src={post.file} alt={post.title} />
+        <Image
+          className="h-full w-full object-cover"
+          width={300}
+          height={300}
+          src={post.file}
+          alt={post.title}
+        />
       </div>
       <div>
         <div className="mt-2 flex justify-around ">

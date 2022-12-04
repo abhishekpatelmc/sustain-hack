@@ -88,13 +88,15 @@ const Home: NextPage = ({
           </div>
         </div>
         {/* Posts */}
-        <div className="mt-10 grid grid-cols-4 gap-4">
+        <div className="m-10 grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
           {postData?.length > 0 &&
-            postData?.map((post: any) => <Post post={post} />)}
+            postData?.map((post: any) => (
+              <Post post={post} isActive={isActive} />
+            ))}
         </div>
 
         {/* Create Post */}
-        {!session ? (
+        {/* {!session ? (
           <div></div>
         ) : (
           <div className="mt-20 flex justify-center">
@@ -102,7 +104,7 @@ const Home: NextPage = ({
               <Link href={"/create-post"}>Create Post</Link>
             </button>
           </div>
-        )}
+        )} */}
       </main>
     </>
   );

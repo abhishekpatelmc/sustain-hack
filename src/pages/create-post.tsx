@@ -67,49 +67,93 @@ const CreatePost = () => {
   };
 
   return (
-    
     <div>
-      createPost
-      <form onSubmit={handleSubmit}>
-        <input
-          name="title"
-          onChange={handleChange}
-          type="text"
-          placeholder="title"
-        />
-        <input
-          name="content"
-          onChange={handleChange}
-          type="text"
-          placeholder="content"
-        />
-        <input
-          name="address"
-          onChange={handleChange}
-          type="text"
-          placeholder="address"
-        />
-        <button
-          type="button"
-          name="status"
-          onClick={handleChange}
-          value="active"
-        >
-          active
-        </button>
-        <button
-          type="button"
-          name="status"
-          onClick={handleChange}
-          value="inactive"
-        >
-          inactive
-        </button>
-        <input name="file" type="file" onChange={handleChange} />
-        <button type="button" onClick={handleUpload}>
-          upload
-        </button>
-        <button type="submit">Submit</button>
+      <Navbar />
+      <div className="my-10 text-center text-4xl font-bold uppercase text-slate-700">
+        Add your post
+      </div>
+      <form className="flex justify-evenly sm:mx-10" onSubmit={handleSubmit}>
+        {/* Left side */}
+        <div className="">
+          <div>
+            <label className="my-1 block pl-2 text-lg font-medium text-gray-700">
+              Title
+            </label>
+            <input
+              className="my-2 h-10 w-80 rounded-3xl border-2 pl-2"
+              name="title"
+              onChange={handleChange}
+              type="text"
+              placeholder="Title"
+            />
+          </div>
+          <div>
+            <label className="my-1 block pl-2 text-lg font-medium text-gray-700">
+              Description
+            </label>
+            <input
+              className="my-2 h-10 w-80 rounded-3xl border-2 pl-2"
+              name="content"
+              onChange={handleChange}
+              type="text"
+              placeholder="Description"
+            />
+          </div>
+          <div>
+            <label className="my-1 block pl-2 text-lg font-medium text-gray-700">
+              Address
+            </label>
+            <input
+              className="my-2 h-10 w-80 rounded-3xl border-2 pl-2"
+              name="address"
+              onChange={handleChange}
+              type="text"
+              placeholder="Address"
+            />
+          </div>
+          <div className="my-4 flex justify-evenly text-lg">
+            <button
+              className="mr-4 rounded-3xl border-2 border-green-600 py-1 px-4 hover:bg-green-600 hover:text-white"
+              type="button"
+              name="status"
+              onClick={handleChange}
+              value="active"
+            >
+              Active
+            </button>
+            <button
+              className="mr-4 rounded-3xl border-2 border-rose-700 py-1 px-4 hover:bg-rose-700 hover:text-white"
+              type="button"
+              name="status"
+              onClick={handleChange}
+              value="inactive"
+            >
+              Inactive
+            </button>
+          </div>
+          <button
+            className="my-2 h-10 w-80 rounded-3xl border-2 border-green-700 text-lg hover:bg-green-700 hover:text-white"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+        {/* Right side */}
+        <div className="mt-10">
+          <input
+            className="mb-10 block w-80  rounded-2xl border-2 py-20"
+            name="file"
+            type="file"
+            onChange={handleChange}
+          />
+          <button
+            type="button"
+            className="my-4 h-10 w-80 rounded-3xl border-2 border-green-700 text-lg hover:bg-green-700 hover:text-white"
+            onClick={handleUpload}
+          >
+            upload
+          </button>
+        </div>
       </form>
     </div>
   );

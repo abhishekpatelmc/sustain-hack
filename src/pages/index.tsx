@@ -1,8 +1,10 @@
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
 
 const Home = () => {
+  const { data: session } = useSession();
   return (
     <>
       <Head>
@@ -15,20 +17,20 @@ const Home = () => {
       <main className="text-center">
         <div>
           {/* Heading */}
-          {/* {!session ? ( */}
-          <div>
-            <h1 className="mt-4 text-4xl font-bold text-gray-800">
-              Welcome to Sustain Hacks,
-            </h1>
-          </div>
-          {/* ) : ( */}
-          <div>
-            <h1 className="mt-4 text-4xl font-bold text-gray-800">
-              Welcome to Sustain Hacks,
-              {/* {session?.user?.name} */}
-            </h1>
-          </div>
-          {/* )} */}
+          {!session ? (
+            <div>
+              <h1 className="mt-4 text-4xl font-bold text-gray-800">
+                Welcome to Sustain Hacks,
+              </h1>
+            </div>
+          ) : (
+            <div>
+              <h1 className="mt-4 text-4xl font-bold text-gray-800">
+                Welcome to Sustain Hacks,
+                {session?.user?.name}
+              </h1>
+            </div>
+          )}
 
           <div className="mt-10 flex  justify-center">
             <p className="w-96">

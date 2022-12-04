@@ -11,11 +11,25 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+
       <main className="text-center">
         <div>
-          <h1 className="mt-4 text-5xl font-bold text-gray-800">
-            Welcome to Sustain Hacks,
-          </h1>
+          {/* Heading */}
+          {/* {!session ? ( */}
+          <div>
+            <h1 className="mt-4 text-4xl font-bold text-gray-800">
+              Welcome to Sustain Hacks,
+            </h1>
+          </div>
+          {/* ) : ( */}
+          <div>
+            <h1 className="mt-4 text-4xl font-bold text-gray-800">
+              Welcome to Sustain Hacks,
+              {/* {session?.user?.name} */}
+            </h1>
+          </div>
+          {/* )} */}
+
           <div className="mt-10 flex  justify-center">
             <p className="w-96">
               About Project Lorem ipsum dolor sit amet consectetur adipisicing

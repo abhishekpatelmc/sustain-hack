@@ -3,11 +3,11 @@ import { storage } from "../server/lib/firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { server } from "../config";
 
 const CreatePost = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [postsState, setPostsState] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -26,9 +26,9 @@ const CreatePost = () => {
         [e.target.name]: e.target.value,
       });
     } else {
-      if(e.target.files[0]){
-      setFile(e.target.files[0]);
-      setPreview(URL.createObjectURL(e.target.files[0]));
+      if (e.target.files[0]) {
+        setFile(e.target.files[0]);
+        setPreview(URL.createObjectURL(e.target.files[0]));
       }
     }
   };
@@ -71,13 +71,13 @@ const CreatePost = () => {
       }),
     });
     res = await res.json();
-    router.push("/posts")
-
+    router.push("/posts");
   };
   const allTruthy = () => Object.values(formData).every((x) => x);
 
   return (
     <div>
+      <title>Add Post</title>
       <Navbar />
       <div className="my-10 text-center text-4xl font-bold uppercase text-slate-700">
         Add your post
@@ -146,7 +146,7 @@ const CreatePost = () => {
           </div>
           {!allTruthy() && <div>Enter all fields</div>}
           <button
-          disabled={!allTruthy()}
+            disabled={!allTruthy()}
             className={
               allTruthy()
                 ? "my-2 h-10 w-80 rounded-3xl border-2 border-green-700 text-lg hover:bg-green-700 hover:text-white"
@@ -183,7 +183,13 @@ const CreatePost = () => {
                   </span>
                 </span>
               ) : (
-                <Image width={80} height={100} className="object-cover w-80 h-full" src={preview} alt="test" />
+                <Image
+                  width={80}
+                  height={100}
+                  className="h-full w-80 object-cover"
+                  src={preview}
+                  alt="test"
+                />
               )}
               <input
                 required

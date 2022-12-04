@@ -42,19 +42,21 @@ const Posts: NextPage = ({
   }, [isActive]);
   return (
     <div>
+      <title>Posts</title>
       <Navbar />
+
       <div className="text-center">
         {/* Heading */}
         {!session ? (
           <div>
             <h1 className="mt-4 text-4xl font-bold text-gray-800">
-              Welcome to Sustain Hacks,
+              Welcome to Reuse
             </h1>
           </div>
         ) : (
           <div>
             <h1 className="mt-4 text-4xl font-bold text-gray-800">
-              Welcome to Sustain Hacks, {session?.user?.name}
+              Welcome to Reuse, {session?.user?.name}
             </h1>
           </div>
         )}

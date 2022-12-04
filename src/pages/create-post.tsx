@@ -3,8 +3,10 @@ import { storage } from "../server/lib/firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
+import { useRouter } from 'next/router'
 
 const CreatePost = () => {
+  const router = useRouter()
   const [postsState, setPostsState] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -68,6 +70,8 @@ const CreatePost = () => {
       }),
     });
     res = await res.json();
+    router.push("/posts")
+
   };
   const allTruthy = () => Object.values(formData).every((x) => x);
 
@@ -141,6 +145,7 @@ const CreatePost = () => {
           </div>
           {!allTruthy() && <div>Enter all fields</div>}
           <button
+          disabled={!allTruthy()}
             className={
               allTruthy()
                 ? "my-2 h-10 w-80 rounded-3xl border-2 border-green-700 text-lg hover:bg-green-700 hover:text-white"

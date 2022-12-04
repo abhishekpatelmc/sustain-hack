@@ -1,9 +1,18 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 
 const Post = ({ post, isActive }: any) => {
+  const router = useRouter();
+
   return (
-    <div key={post.title} className="rounded-2xl bg-white p-2 shadow-lg">
+    <div
+      key={post.title}
+      onClick={() => {
+        router.push(`/${post._id}`);
+      }}
+      className="rounded-2xl bg-white p-2 shadow-lg"
+    >
       <div className="h-80 p-2">
         <Image
           className="h-full w-full rounded-2xl object-cover"

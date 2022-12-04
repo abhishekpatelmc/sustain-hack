@@ -1,4 +1,4 @@
-import clientPromise from "../../server/lib/mongodb";
+import clientPromise from "../../../server/lib/mongodb";
 
 export default async function handler(req:any, res:any) {
   const client = await clientPromise;

@@ -2,6 +2,7 @@ import { InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import React from "react";
 import Navbar from "../components/Navbar";
+import { server } from "../config";
 
 const DeatilsPage = ({
   post,
@@ -58,7 +59,7 @@ const DeatilsPage = ({
 export async function getStaticProps(context: any) {
   const id = context.params.id;
 
-  const res = await fetch(`${process.env.HOST_URL}/api/posts/` + id);
+  const res = await fetch(`${server}/api/posts/` + id);
   const data = await res.json();
   return {
     props: { post: data },
@@ -70,7 +71,7 @@ export async function getStaticPaths() {
   // (faster builds, but slower initial page load)
 
   // Call an external API endpoint to get posts
-  const res = await fetch(`${process.env.HOST_URL}/api/posts`);
+  const res = await fetch(`${server}/api/posts`);
   const posts = await res.json();
 
   // Get the paths we want to prerender based on posts
@@ -82,6 +83,6 @@ export async function getStaticPaths() {
   console.log(paths);
 
   // { fallback: false } means other routes should 404
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 export default DeatilsPage;

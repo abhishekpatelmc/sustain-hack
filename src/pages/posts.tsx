@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
+import { server } from "../config";
 
 const Posts: NextPage = ({
   posts,
@@ -105,10 +106,16 @@ const Posts: NextPage = ({
 export default Posts;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch(`${process.env.HOST_URL}/api/posts`);
-  const posts: [] = await res.json();
-
+  let posts;
+  try {
+    const res = await fetch(`${server}/api/posts`);
+     posts: [] = await res.json();
+    
+  } catch (error) {
+    console.log(error);
+  }
   return {
     props: { posts },
   };
+  
 };

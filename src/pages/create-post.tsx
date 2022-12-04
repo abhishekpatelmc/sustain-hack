@@ -4,6 +4,7 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import { useRouter } from 'next/router'
+import { server } from "../config";
 
 const CreatePost = () => {
   const router = useRouter()
@@ -63,7 +64,7 @@ const CreatePost = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    let res = await fetch(`${process.env.HOST_URL}/api/posts`, {
+    let res = await fetch(`${server}/api/posts`, {
       method: "POST",
       body: JSON.stringify({
         ...formData,

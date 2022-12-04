@@ -17,7 +17,7 @@ import { server } from "../config";
 
 const Posts: NextPage = ({
   posts,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data: session } = useSession();
   console.log("session data", session);
   console.log("all post", posts);
@@ -105,7 +105,7 @@ const Posts: NextPage = ({
 
 export default Posts;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetch(`${server}/api/posts`);
   const posts: [] = await res.json();
 

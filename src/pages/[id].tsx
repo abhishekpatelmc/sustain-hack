@@ -77,7 +77,7 @@ export async function getStaticPaths() {
   // Get the paths we want to prerender based on posts
   // In production environments, prerender all pages
   // (slower builds, but faster initial page load)
-  const paths = posts?.data.map((post: any) => ({
+  const paths = posts?.map((post: any) => ({
     params: { id: post._id.toString() },
   }));
   console.log(paths);

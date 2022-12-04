@@ -23,18 +23,18 @@ const Posts: NextPage = ({
   console.log("all post", posts);
 
   const [isActive, setIsActive] = useState(true);
-  const [postData, setPostData] = useState(posts?.data);
+  const [postData, setPostData] = useState(posts);
 
   useEffect(() => {
     // console.log(isActive);
     // console.log(session);
     if (isActive) {
-      const activePost = posts?.data.filter((post: any) => {
+      const activePost = posts.filter((post: any) => {
         return post.status === "active";
       });
       setPostData(activePost);
     } else {
-      const inactivePost = posts?.data.filter((post: any) => {
+      const inactivePost = posts.filter((post: any) => {
         return post.status === "inactive";
       });
       setPostData(inactivePost);

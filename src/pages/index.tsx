@@ -1,38 +1,8 @@
-import { GetStaticProps, InferGetStaticPropsType, type NextPage } from "next";
-import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import Post from "../components/Post";
 
-const Home: NextPage = ({
-  posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data: session } = useSession();
-  console.log("session data", session);
-  console.log("all post", posts);
-
-  const [isActive, setIsActive] = useState(true);
-  const [postData, setPostData] = useState(posts?.data);
-
-  useEffect(() => {
-    // console.log(isActive);
-    // console.log(session);
-    if (isActive) {
-      const activePost = posts?.data.filter((post: any) => {
-        return post.status === "active";
-      });
-      setPostData(activePost);
-    } else {
-      const inactivePost = posts?.data.filter((post: any) => {
-        return post.status === "inactive";
-      });
-      setPostData(inactivePost);
-    }
-  }, [isActive]);
-
+const Home = () => {
   return (
     <>
       <Head>
@@ -42,84 +12,21 @@ const Home: NextPage = ({
       </Head>
       <Navbar />
       <main className="text-center">
-        {/* Heading */}
-        {!session ? (
-          <div>
-            <h1 className="mt-4 text-5xl font-bold text-gray-800">
-              Welcome to Sustain Hacks,
-            </h1>
-          </div>
-        ) : (
-          <div>
-            <h1 className="mt-4 text-5xl font-bold text-gray-800">
-              Welcome to Sustain Hacks, {session?.user?.name}
-            </h1>
-          </div>
-        )}
-
-        {/* Active / Inactive bar */}
-
-        <div className="mt-10 flex justify-center">
-          <div className="flex gap-2 rounded-3xl border-2 border-gray-200">
-            <button
-              onClick={() => {
-                setIsActive(true);
-              }}
-              className={
-                isActive
-                  ? "rounded-3xl border-green-600 bg-green-700 px-4  py-2 text-white "
-                  : "rounded-3xl border-2 border-green-600 px-4 py-1"
-              }
-            >
-              active bar
-            </button>
-            <button
-              onClick={() => {
-                setIsActive(false);
-              }}
-              className={
-                !isActive
-                  ? "rounded-3xl border-rose-900 bg-rose-600 px-4  py-2 text-white"
-                  : "rounded-3xl border-2 border-rose-900 px-4 py-1"
-              }
-            >
-              Inactive bar
-            </button>
+        <div>
+          <h1 className="mt-4 text-5xl font-bold text-gray-800">
+            Welcome to Sustain Hacks,
+          </h1>
+          <div className="mt-10 flex  justify-center">
+            <p className="w-96">
+              About Project Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet
+            </p>
           </div>
         </div>
-        {/* Posts */}
-        <div className="m-10 grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
-          {postData?.length > 0 &&
-            postData?.map((post: any) => (
-              <Post post={post} isActive={isActive} />
-            ))}
-        </div>
-
-        {/* Create Post */}
-        {/* {!session ? (
-          <div></div>
-        ) : (
-          <div className="mt-20 flex justify-center">
-            <button className="hover: w-40 rounded-2xl border-2 bg-green-600 px-2 py-2 text-white hover:border-slate-800 hover:bg-white hover:text-slate-800">
-              <Link href={"/create-post"}>Create Post</Link>
-            </button>
-          </div>
-        )} */}
       </main>
     </>
   );
 };
-export const getStaticProps: GetStaticProps = async (context) => {
-  let res = await fetch("http://localhost:3000/api/posts", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  let posts: [] = await res.json();
 
-  return {
-    props: { posts },
-  };
-};
 export default Home;

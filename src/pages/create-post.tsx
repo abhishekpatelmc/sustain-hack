@@ -140,12 +140,42 @@ const CreatePost = () => {
         </div>
         {/* Right side */}
         <div className="mt-10">
-          <input
-            className="mb-10 block w-80  rounded-2xl border-2 py-20"
+          <div className="max-w-xl">
+            <label className="flex h-64 w-full cursor-pointer appearance-none justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-white px-4 transition hover:border-gray-400 focus:outline-none">
+              <span className="flex items-center space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-gray-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  />
+                </svg>
+                <span className="font-medium text-gray-600">
+                  Drop files to Attach, or
+                  <span className="text-blue-600 underline">browse</span>
+                </span>
+              </span>
+              <input
+                type="file"
+                onChange={handleChange}
+                name="file"
+                className="hidden"
+              />
+            </label>
+          </div>
+          {/* <input
+            className="mb-10 block w-80 rounded-2xl border-2 py-20"
             name="file"
             type="file"
             onChange={handleChange}
-          />
+          /> */}
           <button
             type="button"
             className="my-4 h-10 w-80 rounded-3xl border-2 border-green-700 text-lg hover:bg-green-700 hover:text-white"

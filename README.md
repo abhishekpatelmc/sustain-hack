@@ -1,28 +1,38 @@
-# Create T3 App
+# Unused to Reuse
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+> Reuse is a platform that allows you to donate your old items to people who need them. Items which are set active are available for Reuse. Anyone near the location can pick up the item for free. The item is then marked as inactive and is no longer available.
 
-## What's next? How do I make an app with this?
+## Installation
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- clone the repository
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+```bash
+git clone https://github.com/abhishekpatelmc/sustainhack.git
+```
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## To Run the Server
 
-## Learn More
+- Install the dependencies
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+```bash
+npm install
+```
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- Run the server
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+```bash
+npm run dev
+```
 
-## How do I deploy this?
+## Built With
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+- [Next.js](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Firebase](https://firebase.google.com/)
+
+## Authors
+
+- [@abhishekpatelmc](https://www.github.com/abhishekpatelmc)
+- [@prajwalr308](https://www.github.com/prajwalr308)

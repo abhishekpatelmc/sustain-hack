@@ -16,23 +16,23 @@ const DeatilsPage = ({
         </div>
         <div className="flex justify-evenly sm:mx-10">
           {/* Left side */}
-          <div className="">
-            <div className="my-1 block pl-2 text-lg font-medium text-gray-700">
+          <div>
+            <div className="my-4  mt-10 block pl-2 text-4xl font-bold text-gray-700">
               {post.title}
             </div>
-            <div className="my-1 block pl-2 text-lg font-medium text-gray-700">
+            <div className="my-4 block pl-2 text-xl font-medium text-gray-600">
               {post.content}
             </div>
-            <div className="my-1 block pl-2 text-lg font-medium text-gray-700">
+            <div className="my-4 block pl-2 text-lg font-normal text-gray-500">
               {post.address}
             </div>
-            <div className="my-4 flex justify-evenly text-lg">
+            <div className="text-md my-4 ml-2 flex">
               {post.status === "active" ? (
-                <div className="mr-4 rounded-2xl border  border-green-700 px-2 py-1 capitalize  hover:bg-green-700 hover:text-white">
+                <div className="mr-4 w-32 rounded-2xl border border-green-700 px-2 py-1 text-center capitalize  hover:bg-green-700 hover:text-white">
                   Active
                 </div>
               ) : (
-                <div className="mr-4 rounded-2xl border border-rose-700 px-2 py-1  capitalize hover:bg-rose-700 hover:text-white ">
+                <div className="mr-4 w-32 rounded-2xl border border-rose-700 px-2 py-1 text-center capitalize hover:bg-rose-700 hover:text-white ">
                   Inactive
                 </div>
               )}
@@ -44,6 +44,7 @@ const DeatilsPage = ({
               <Image
                 width={300}
                 height={300}
+                className="rounded-2xl"
                 alt="Picture of the post"
                 src={post.file}
               />

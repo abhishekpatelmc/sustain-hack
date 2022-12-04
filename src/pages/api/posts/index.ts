@@ -1,12 +1,12 @@
 import clientPromise from "../../../server/lib/mongodb";
 
-export default async function handler(req:any, res:any) {
+export default async function handler(req: any, res: any) {
   const client = await clientPromise;
   const db = client.db("test");
   switch (req.method) {
     case "POST":
-      let bodyObject = JSON.parse(req.body);
-      let myPost = await db.collection("posts").insertOne(bodyObject);
+      const bodyObject = JSON.parse(req.body);
+      const myPost = await db.collection("posts").insertOne(bodyObject);
       res.json(myPost);
       break;
     case "GET":

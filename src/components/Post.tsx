@@ -7,7 +7,6 @@ const Post = ({ post, isActive }: any) => {
 
   return (
     <div
-      key={post.title}
       onClick={() => {
         router.push(`/${post._id}`);
       }}

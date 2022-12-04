@@ -1,5 +1,11 @@
 import React from "react";
-import { GetServerSideProps, GetStaticProps, InferGetServerSidePropsType, InferGetStaticPropsType, type NextPage } from "next";
+import {
+  GetServerSideProps,
+  GetStaticProps,
+  InferGetServerSidePropsType,
+  InferGetStaticPropsType,
+  type NextPage,
+} from "next";
 import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
@@ -86,7 +92,9 @@ const Posts: NextPage = ({
         <div className="m-10 grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
           {postData?.length > 0 &&
             postData?.map((post: any) => (
-              <Post post={post} isActive={isActive} />
+              <div key={post.title}>
+                <Post post={post} isActive={isActive} />
+              </div>
             ))}
         </div>
       </div>
@@ -97,16 +105,15 @@ const Posts: NextPage = ({
 export default Posts;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let res = await fetch(`${process.env.HOST_URL}/api/posts`, {
+  const res = await fetch(`${process.env.HOST_URL}/api/posts`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
-  let posts: [] = await res.json();
+  const posts: [] = await res.json();
 
   return {
     props: { posts },
   };
 };
-

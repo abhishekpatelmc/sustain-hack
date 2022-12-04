@@ -1,7 +1,9 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
-
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "../../../server/lib/mongodb";
 import { env } from "../../../env/server.mjs";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
@@ -13,12 +15,14 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
+  adapter: MongoDBAdapter(clientPromise),
   // Configure one or more authentication providers
   providers: [
-    DiscordProvider({
-      clientId: env.DISCORD_CLIENT_ID,
-      clientSecret: env.DISCORD_CLIENT_SECRET,
+    GoogleProvider({
+      clientId: `${process.env.GOOGLE_CLIENT_ID}`,
+      clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
     }),
+
     // ...add more providers here
   ],
 };

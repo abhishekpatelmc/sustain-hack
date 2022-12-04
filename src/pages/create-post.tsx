@@ -72,7 +72,7 @@ const CreatePost = () => {
       <div className="my-10 text-center text-4xl font-bold uppercase text-slate-700">
         Add your post
       </div>
-      <form className="flex justify-evenly" onSubmit={handleSubmit}>
+      <form className="flex justify-evenly sm:mx-10" onSubmit={handleSubmit}>
         {/* Left side */}
         <div className="">
           <div>

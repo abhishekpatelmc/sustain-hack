@@ -1,18 +1,29 @@
 import Image from "next/image";
 import React from "react";
 
-const Post = ({ post }: any) => {
+const Post = ({ post, isActive }: any) => {
   return (
-    <div>
-      <div key={post.title}>
-        <div className="col-span-1 rounded-lg bg-white shadow-lg">
-          <div>{post.title}</div>
-          <div> {post.content}</div>
-          <div>{post.status}</div>
-          <div>{post.address}</div>
-          <div>
-            <Image width={100} height={100} src={post.file} alt={post.title} />
-          </div>
+    <div key={post.title} className="rounded-lg bg-white p-2 shadow-lg">
+      <div className="h-80 p-2">
+        <Image width={300} height={300} src={post.file} alt={post.title} />
+      </div>
+      <div>
+        <div className="mt-2 flex justify-around ">
+          <div className="ml-4 text-2xl font-bold">{post.title}</div>
+          {/* <div> {post.content}</div> */}
+          {isActive ? (
+            <div className="mr-4 rounded-2xl border border-green-700  px-2 py-1">
+              {post.status}
+            </div>
+          ) : (
+            <div className="mr-4 rounded-2xl border border-rose-700  px-2 py-1 ">
+              {post.status}
+            </div>
+          )}
+        </div>
+
+        <div className="my-2 flex justify-center text-gray-500">
+          {post.address}
         </div>
       </div>
     </div>

@@ -2,6 +2,10 @@
 
 > Reuse is a platform that allows you to donate your old items to people who need them. Items which are set active are available for Reuse. Anyone near the location can pick up the item for free. The item is then marked as inactive and is no longer available.
 
+## Demo
+
+- [Devpost](https://devpost.com/software/unused-to-reuse)
+
 ## Installation
 
 - clone the repository
@@ -23,6 +27,13 @@ npm install
 ```bash
 npm run dev
 ```
+
+## Screenshots
+
+![Active posts](/resource/active%20post.png)
+![Inactive Posts](/resource/Inactive%20post.png)
+![Post Deatils](/resource/post%20detail.png)
+![Add posts](/resource/add%20your%20post.png)
 
 ## Built With
 

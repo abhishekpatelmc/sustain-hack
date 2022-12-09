@@ -4,7 +4,7 @@
 
 ## Demo
 
-- [Devpost](https://devpost.com/software/unused-to-reuse)
+- [Reuse](https://sustainhack.vercel.app/)
 
 ## Installation
 

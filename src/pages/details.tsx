@@ -33,7 +33,7 @@ const DeatilsPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("/api/postById?id=" + id)
+    fetch(`${server}/api/postById?id=` + id)
       .then((res) => res.json())
       .then((data) => {
         setData(data);

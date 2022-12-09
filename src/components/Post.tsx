@@ -8,7 +8,7 @@ const Post = ({ post, isActive }: any) => {
   return (
     <div
       onClick={() => {
-        router.push(`/${post._id}`);
+        router.push("details?id=" + post._id);
       }}
       className="rounded-2xl bg-white p-2 shadow-lg"
     >

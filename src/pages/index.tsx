@@ -39,7 +39,7 @@ const Home = () => {
             <p className="w-2/5 text-xl font-extralight text-gray-500">
               Reuse is a platform that allows you to donate your old items to
               people who need them. Items which are set active are available for
-              Resuse. Items which are set inactive were previously donated.
+              Resuse. Items which are set inactive were previously donated. 
             </p>
           </div>
           <div className="mt-10 flex justify-center gap-5">

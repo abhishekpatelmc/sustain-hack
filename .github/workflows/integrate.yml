@@ -5,19 +5,12 @@ on:
     branches: [main]
 
 jobs:
-  # Build job
   branch_integration:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          node-verion: 16.15.1
       - run: npm ci
-      - run: npm run build --if-present
+      - run: npm run build

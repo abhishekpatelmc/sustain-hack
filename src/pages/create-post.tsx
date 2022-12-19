@@ -75,6 +75,8 @@ const CreatePost = () => {
     } catch (error) {
       console.log(error);
     }
+    
+
   };
   const allTruthy = () => Object.values(formData).every((x) => x);
 
@@ -203,6 +205,12 @@ const CreatePost = () => {
               />
             </label>
           </div>
+          {/* <input
+            className="mb-10 block w-80 rounded-2xl border-2 py-20"
+            name="file"
+            type="file"
+            onChange={handleChange}
+          /> */}
           <button
             type="button"
             className="my-4 h-10 w-80 rounded-3xl border-2 border-green-700 text-lg hover:bg-green-700 hover:text-white"

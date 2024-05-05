@@ -6,6 +6,11 @@
 
 - [Reuse](https://sustainhack-e37qxgs1s-abhishekpatelmc.vercel.app/)
 
+![Active posts](/resource/active%20post.png)
+![Inactive Posts](/resource/Inactive%20post.png)
+![Post Deatils](/resource/post%20detail.png)
+![Add posts](/resource/add%20your%20post.png)
+
 ## Installation
 
 - clone the repository
@@ -27,13 +32,6 @@ npm install
 ```bash
 npm run dev
 ```
-
-## Screenshots
-
-![Active posts](/resource/active%20post.png)
-![Inactive Posts](/resource/Inactive%20post.png)
-![Post Deatils](/resource/post%20detail.png)
-![Add posts](/resource/add%20your%20post.png)
 
 ## Built With
 
